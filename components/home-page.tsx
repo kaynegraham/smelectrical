@@ -26,7 +26,7 @@ const serviceBlocks = [
 
 const featuredReviews = siteConfig.reviews.slice(0, 4);
 const workImages = [
-  '/images/hero.jpg',
+  '/images/switchboardfinished.jpg',
   '/images/switchboardfinished.jpg',
   '/images/outdoorkitchenandspa.jpg',
   '/images/switchboardafter.jpg',
@@ -60,7 +60,7 @@ export default function HomePage() {
       </header>
 
       <section className="relative min-h-[84vh] md:min-h-[88vh]">
-        <Image src="/images/hero.jpg" alt="Electrical work in Perth" fill className="object-cover" priority sizes="100vw" />
+        <Image src="/images/switchboardafter.jpg" alt="Electrical work in Perth" fill className="object-cover" priority sizes="100vw" />
         <div className="absolute inset-0 bg-black/78" />
         <div className="relative mx-auto flex min-h-[84vh] md:min-h-[88vh] w-full max-w-6xl items-center px-4 py-14 md:py-20">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
