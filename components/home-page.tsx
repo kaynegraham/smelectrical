@@ -59,43 +59,44 @@ export default function HomePage() {
         )}
       </header>
 
-      <section className="relative min-h-[88vh]">
-        <Image src="/images/hero.jpg" alt="Electrical work in Perth" fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-black/72" />
-        <div className="relative mx-auto flex min-h-[88vh] w-full max-w-6xl items-center px-4 py-20">
+      <section className="relative min-h-[84vh] md:min-h-[88vh]">
+        <Image src="/images/hero.jpg" alt="Electrical work in Perth" fill className="object-cover" priority sizes="100vw" />
+        <div className="absolute inset-0 bg-black/78" />
+        <div className="relative mx-auto flex min-h-[84vh] md:min-h-[88vh] w-full max-w-6xl items-center px-4 py-14 md:py-20">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-yellow-300">Perth Residential Electrician</p>
-            <h1 className="font-display text-6xl leading-[0.95] md:text-8xl">Perth Electrician That Actually Shows Up.</h1>
-            <p className="mt-6 max-w-xl text-lg text-zinc-200">No chasing. No runaround. Just clean, reliable electrical work done right.</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="tel:0427771905" className="rounded-full bg-yellow-300 px-7 py-3 font-bold text-black">Call Sam Now</a>
-              <a href="#quote" className="rounded-full border border-white/50 px-7 py-3 font-semibold">Get a Free Quote</a>
+            <h1 className="font-display text-5xl leading-[0.95] text-white md:text-8xl">Perth Electrician That Actually Shows Up.</h1>
+            <p className="mt-5 max-w-xl text-lg font-medium text-zinc-100">No chasing. No runaround. Just clean, reliable electrical work done right.</p>
+            <div className="mt-7 flex flex-wrap gap-3 pb-14 md:pb-0">
+              <a href="tel:0427771905" className="rounded-full bg-yellow-300 px-7 py-3 text-base font-bold text-black">Call Sam Now</a>
+              <a href="#quote" className="rounded-full border border-white/50 px-7 py-3 text-base font-semibold">Get a Free Quote</a>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="mx-auto flex w-full max-w-6xl flex-wrap gap-x-8 gap-y-3 px-4 py-7 text-sm font-semibold uppercase tracking-wide text-zinc-100">
+      <section className="mx-auto flex w-full max-w-6xl flex-wrap gap-x-8 gap-y-3 px-4 py-6 text-sm font-semibold uppercase tracking-wide text-zinc-100 md:py-7">
         {['Perth Local', 'Fully Licensed', 'Shows Up On Time', 'Clean, Tidy Work'].map((item) => (
           <p key={item}>✔ {item}</p>
         ))}
       </section>
 
-      <section className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2">
-        <Image src="/images/switchboardfinished.jpg" alt="Sam on site" width={1000} height={700} className="h-full rounded-sm object-cover" />
+      <section className="mx-auto grid w-full max-w-6xl items-center gap-8 px-4 py-14 md:grid-cols-2 md:gap-12 md:py-16">
+        <Image src="/images/switchboardfinished.jpg" alt="Sam on site" width={760} height={520} sizes="(max-width: 768px) 100vw, 45vw" className="h-auto w-full rounded-sm object-cover" />
         <div>
           <h2 className="font-display text-5xl">Meet Sam</h2>
-          <p className="mt-4 max-w-lg text-lg text-zinc-300">Straightforward electrical work across Perth. No upsells, no mucking around — just reliable service and clean installs.</p>
+          <p className="mt-4 max-w-lg text-xl font-medium text-zinc-200">Straightforward electrical work across Perth. No upsells, no mucking around — just reliable service and clean installs.</p>
         </div>
       </section>
 
-      <section id="services" className="mx-auto w-full max-w-6xl px-4 py-16">
+      <section id="services" className="mx-auto w-full max-w-6xl px-4 py-14 md:py-16">
         <h2 className="font-display text-5xl">What Sam Does</h2>
+        <p className="mt-2 text-zinc-300">Fast, reliable electrical work across Perth — no delays.</p>
         <div className="mt-8 space-y-6">
           {serviceBlocks.map((service) => (
             <article key={service.title} className="relative overflow-hidden">
-              <Image src={service.image} alt={service.title} width={1400} height={500} className="h-60 w-full object-cover md:h-72" />
-              <div className="absolute inset-0 bg-black/55" />
+              <Image src={service.image} alt={service.title} width={1400} height={500} sizes="100vw" className="h-56 w-full object-cover md:h-72" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/30" />
               <div className="absolute inset-0 flex flex-col justify-end p-6">
                 <h3 className="font-display text-4xl text-white">{service.title}</h3>
                 <p className="text-zinc-100">{service.copy}</p>
@@ -105,37 +106,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="reviews" className="mx-auto w-full max-w-5xl px-4 py-16">
-        <h2 className="font-display text-5xl">What Perth Clients Say</h2>
-        <div className="mt-8 space-y-8">
-          {featuredReviews.map(([name, review]) => (
-            <blockquote key={name} className="border-l-2 border-yellow-300 pl-5">
-              <p className="mb-2 text-2xl text-yellow-300">★★★★★</p>
-              <p className="text-lg leading-relaxed text-zinc-100">{review}</p>
-              <p className="mt-3 font-bold">— {name}</p>
-            </blockquote>
-          ))}
+      <section id="reviews" className="mx-auto w-full max-w-5xl px-4 py-14 md:py-16">
+        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-yellow-300">★★★★★ Google Reviews</p>
+        <h2 className="mt-2 font-display text-5xl">What Perth Clients Say</h2>
+        <div className="mt-10 space-y-10 md:space-y-12">
+          {featuredReviews.map(([name, review]) => {
+            const [first, ...rest] = review.split('. ');
+            return (
+              <blockquote key={name} className="border-l-2 border-yellow-300 pl-5">
+                <p className="mb-2 text-2xl text-yellow-300">★★★★★</p>
+                <p className="text-lg leading-relaxed text-zinc-100"><strong>{first}{rest.length ? '. ' : ''}</strong>{rest.join('. ')}</p>
+                <p className="mt-3 font-bold">— {name}</p>
+              </blockquote>
+            );
+          })}
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-4 py-16">
+      <section className="mx-auto w-full max-w-6xl px-4 py-14 md:py-16">
         <h2 className="font-display text-5xl">Recent Work</h2>
-        <div className="mt-8 columns-1 gap-6 space-y-6 md:columns-3">
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
           {workImages.map((img) => (
-            <div key={img} className="break-inside-avoid">
-              <Image src={img} alt="Recent electrical work" width={900} height={700} className="w-full object-cover" />
+            <div key={img} className="aspect-[4/3] overflow-hidden">
+              <Image src={img} alt="Recent electrical work" width={900} height={700} sizes="(max-width: 768px) 100vw, 33vw" className="h-full w-full object-cover" />
             </div>
           ))}
         </div>
       </section>
 
-      <section id="quote" className="bg-yellow-300 py-16 text-black">
+      <section id="quote" className="bg-yellow-300 py-14 text-black md:py-16">
         <div className="mx-auto w-full max-w-4xl px-4">
           <h2 className="font-display text-5xl">Need an Electrician? Get It Sorted Today.</h2>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href="tel:0427771905" className="rounded-full bg-black px-6 py-3 font-bold text-yellow-300">Call Now</a>
-            <a href="#quote-form" className="rounded-full border border-black px-6 py-3 font-semibold">Request Quote</a>
+            <a href="tel:0427771905" className="rounded-full bg-black px-6 py-3 text-base font-bold text-yellow-300">Call Now</a>
+            <a href="#quote-form" className="rounded-full border border-black px-6 py-3 text-base font-semibold">Request Quote</a>
           </div>
+          <p className="mt-3 text-sm font-semibold">Usually responds within 1–2 hours</p>
           <form id="quote-form" action="/api/quote" method="post" className="mt-8 space-y-3">
             <input name="name" required placeholder="Name" className="w-full rounded-none border border-black/25 bg-white px-4 py-3" />
             <input name="phone" required placeholder="Phone" className="w-full rounded-none border border-black/25 bg-white px-4 py-3" />
@@ -145,10 +151,14 @@ export default function HomePage() {
         </div>
       </section>
 
+      <a href="tel:0427771905" className="fixed bottom-3 left-4 right-4 z-50 rounded-full bg-yellow-300 px-6 py-4 text-center text-base font-bold text-black shadow-xl md:hidden">
+        Call Now
+      </a>
+
       <footer className="border-t border-yellow-300/20 py-10 text-center text-zinc-300">
         <p className="font-display text-3xl text-white">SM Electrical WA</p>
         <p className="mt-2">Quality work. No robots.</p>
-        <p className="mt-2">{siteConfig.phone} · {siteConfig.email} · Perth WA</p>
+        <p className="mt-2"><a href="tel:0427771905" className="text-yellow-300">{siteConfig.phone}</a> · {siteConfig.email} · Perth WA</p>
       </footer>
     </main>
   );
