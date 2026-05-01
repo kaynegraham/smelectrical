@@ -61,15 +61,15 @@ export default function HomePage() {
 
       <section className="relative min-h-[84vh] md:min-h-[88vh]">
         <Image src="/images/switchboardafter.jpg" alt="Electrical work in Perth" fill className="object-cover" priority sizes="100vw" />
-        <div className="absolute inset-0 bg-black/78" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/75" />
         <div className="relative mx-auto flex min-h-[84vh] md:min-h-[88vh] w-full max-w-6xl items-center px-4 py-14 md:py-20">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-yellow-300">Perth Residential Electrician</p>
-            <h1 className="font-display text-5xl leading-[0.95] text-white md:text-8xl">Perth Electrician That Actually Shows Up.</h1>
-            <p className="mt-5 max-w-xl text-lg font-medium text-zinc-100">No chasing. No runaround. Just clean, reliable electrical work done right.</p>
+            <h1 className="font-display text-5xl leading-[0.95] text-yellow-300 md:text-8xl">Perth Electrician That Actually Shows Up.</h1>
+            <p className="mt-5 max-w-xl text-lg font-semibold text-zinc-200">No chasing. No runaround. Just clean, reliable electrical work done right.</p>
             <div className="mt-7 flex flex-wrap gap-3 pb-14 md:pb-0">
               <a href="tel:0427771905" className="rounded-full bg-yellow-300 px-7 py-3 text-base font-bold text-black">Call Sam Now</a>
-              <a href="#quote" className="rounded-full border border-white/50 px-7 py-3 text-base font-semibold">Get a Free Quote</a>
+              <a href="#quote" className="rounded-full border border-yellow-300/70 px-7 py-3 text-base font-semibold text-yellow-200">Get a Free Quote</a>
             </div>
           </motion.div>
         </div>
