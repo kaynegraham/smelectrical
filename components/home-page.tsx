@@ -24,13 +24,16 @@ const serviceBlocks = [
   }
 ];
 
-const featuredReviews = siteConfig.reviews.slice(0, 4);
+const featuredReviews = siteConfig.reviews.slice(0, 4).map(([name, review]) => {
+  const compact = review.split(/(?<=[.!?])\s+/).slice(0, 2).join(' ');
+  return [name, compact.length > 200 ? `${compact.slice(0, 197)}...` : compact] as const;
+});
 const workImages = [
-  '/images/switchboardfinished.jpg',
-  '/images/switchboardfinished.jpg',
   '/images/outdoorkitchenandspa.jpg',
-  '/images/switchboardafter.jpg',
-  '/images/lightinstall.jpg'
+  '/images/switchboardfinished.jpg',
+  '/images/lightinstall.jpg',
+  '/images/switchboardbefore.jpg',
+  '/images/switchboardafter.jpg'
 ];
 
 export default function HomePage() {
@@ -61,7 +64,7 @@ export default function HomePage() {
 
       <section className="relative min-h-[84vh] md:min-h-[88vh]">
         <Image src="/images/switchboardafter.jpg" alt="Electrical work in Perth" fill className="object-cover" priority sizes="100vw" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/75" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/78 to-black/85" />
         <div className="relative mx-auto flex min-h-[84vh] md:min-h-[88vh] w-full max-w-6xl items-center px-4 py-14 md:py-20">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-yellow-300">Perth Residential Electrician</p>
@@ -90,7 +93,7 @@ export default function HomePage() {
       </section>
 
       <section id="services" className="mx-auto w-full max-w-6xl px-4 py-14 md:py-16">
-        <h2 className="font-display text-5xl">What Sam Does</h2>
+        <h2 className="font-display text-5xl">Electrical Work Done Properly.</h2>
         <p className="mt-2 text-zinc-300">Fast, reliable electrical work across Perth — no delays.</p>
         <div className="mt-8 space-y-6">
           {serviceBlocks.map((service) => (
@@ -109,7 +112,7 @@ export default function HomePage() {
       <section id="reviews" className="mx-auto w-full max-w-5xl px-4 py-14 md:py-16">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-yellow-300">★★★★★ Google Reviews</p>
         <h2 className="mt-2 font-display text-5xl">What Perth Clients Say</h2>
-        <div className="mt-10 space-y-10 md:space-y-12">
+        <div className="mt-10 space-y-12 md:space-y-14">
           {featuredReviews.map(([name, review]) => {
             const [first, ...rest] = review.split('. ');
             return (
@@ -141,11 +144,11 @@ export default function HomePage() {
             <a href="tel:0427771905" className="rounded-full bg-black px-6 py-3 text-base font-bold text-yellow-300">Call Now</a>
             <a href="#quote-form" className="rounded-full border border-black px-6 py-3 text-base font-semibold">Request Quote</a>
           </div>
-          <p className="mt-3 text-sm font-semibold">Usually responds within 1–2 hours</p>
+          <p className="mt-4 text-base font-bold">Usually responds within 1–2 hours</p>
           <form id="quote-form" action="/api/quote" method="post" className="mt-8 space-y-3">
-            <input name="name" required placeholder="Name" className="w-full rounded-none border border-black/25 bg-white px-4 py-3" />
-            <input name="phone" required placeholder="Phone" className="w-full rounded-none border border-black/25 bg-white px-4 py-3" />
-            <textarea name="message" required placeholder="Message" className="min-h-32 w-full rounded-none border border-black/25 bg-white px-4 py-3" />
+            <input name="name" required placeholder="Name" className="w-full rounded-md border-2 border-black/30 bg-white shadow-sm px-4 py-3" />
+            <input name="phone" required placeholder="Phone" className="w-full rounded-md border-2 border-black/30 bg-white shadow-sm px-4 py-3" />
+            <textarea name="message" required placeholder="Message" className="min-h-32 w-full rounded-md border-2 border-black/30 bg-white shadow-sm px-4 py-3" />
             <button className="w-full rounded-none bg-black py-3 text-lg font-bold text-yellow-300">Get a Free Quote</button>
           </form>
         </div>
