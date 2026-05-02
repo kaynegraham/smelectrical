@@ -2,23 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html { scroll-behavior: smooth; }
-body {
-  background: #0a0a0a;
-  color: #f8fafc;
-  font-family: 'Manrope', sans-serif;
-}
-
-.grain::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.15;
-  background-image:
-    radial-gradient(rgba(255, 255, 255, 0.08) 0.5px, transparent 0.5px),
-    radial-gradient(rgba(255, 255, 255, 0.05) 0.5px, transparent 0.5px);
-  background-size: 3px 3px, 5px 5px;
-  background-position: 0 0, 1px 1px;
-}
+html {scroll-behavior:smooth;}
+body {background:#0a0a0a;color:#f8fafc;font-family:'Manrope',sans-serif;}
+.grain::before{content:'';position:fixed;inset:0;background-image:theme('backgroundImage.noise');opacity:.18;pointer-events:none;z-index:0}

@@ -1,165 +1,21 @@
 'use client';
-
 import { motion } from 'framer-motion';
-import { Menu } from 'lucide-react';
+import { Menu, Phone, Star, Zap } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 import { siteConfig } from '@/siteConfig';
 
-const serviceBlocks = [
-  {
-    title: 'Switchboards & Upgrades',
-    copy: 'Safe, compliant upgrades done cleanly and properly.',
-    image: '/images/switchboardafter.jpg'
-  },
-  {
-    title: 'Fault Finding',
-    copy: 'Fast diagnosis and fixes without the runaround.',
-    image: '/images/switchboardbefore.jpg'
-  },
-  {
-    title: 'Residential Electrical',
-    copy: 'Lighting, power, fans and cabling for Perth homes.',
-    image: '/images/lightinstall.jpg'
-  }
-];
+const imgs=['hero.jpg','switchboardafter.jpg','lightinstall.jpg','switchboardfinished.jpg','outdoorkitchenandspa.jpg','switchboardbefore.jpg','logo.jpg'];
+const vids=['mirror.mp4','pendant.mp4'];
 
-const featuredReviews = siteConfig.reviews.slice(0, 4);
-const workImages = [
-  '/images/switchboardfinished.jpg',
-  '/images/switchboardfinished.jpg',
-  '/images/outdoorkitchenandspa.jpg',
-  '/images/switchboardafter.jpg',
-  '/images/lightinstall.jpg'
-];
-
-export default function HomePage() {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <main className="relative z-10 bg-black text-white">
-      <header className="sticky top-0 z-50 border-b border-yellow-300/20 bg-black/85 backdrop-blur">
-        <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3">
-          <span className="font-display text-3xl tracking-wide">SM Electrical WA</span>
-          <button className="md:hidden" onClick={() => setOpen(!open)}>
-            <Menu />
-          </button>
-          <div className="hidden items-center gap-6 md:flex">
-            <a href="#services">Services</a>
-            <a href="#reviews">Reviews</a>
-            <a href="tel:0427771905" className="font-semibold text-yellow-300">0427 771 905</a>
-          </div>
-        </nav>
-        {open && (
-          <div className="space-y-3 border-t border-yellow-300/20 px-4 py-4 md:hidden">
-            <a className="block" href="#services">Services</a>
-            <a className="block" href="#reviews">Reviews</a>
-            <a className="block text-yellow-300" href="tel:0427771905">0427 771 905</a>
-          </div>
-        )}
-      </header>
-
-      <section className="relative min-h-[84vh] md:min-h-[88vh]">
-        <Image src="/images/switchboardafter.jpg" alt="Electrical work in Perth" fill className="object-cover" priority sizes="100vw" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/75" />
-        <div className="relative mx-auto flex min-h-[84vh] md:min-h-[88vh] w-full max-w-6xl items-center px-4 py-14 md:py-20">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-yellow-300">Perth Residential Electrician</p>
-            <h1 className="font-display text-5xl leading-[0.95] text-yellow-300 md:text-8xl">Perth Electrician That Actually Shows Up.</h1>
-            <p className="mt-5 max-w-xl text-lg font-semibold text-zinc-200">No chasing. No runaround. Just clean, reliable electrical work done right.</p>
-            <div className="mt-7 flex flex-wrap gap-3 pb-14 md:pb-0">
-              <a href="tel:0427771905" className="rounded-full bg-yellow-300 px-7 py-3 text-base font-bold text-black">Call Sam Now</a>
-              <a href="#quote" className="rounded-full border border-yellow-300/70 px-7 py-3 text-base font-semibold text-yellow-200">Get a Free Quote</a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="mx-auto flex w-full max-w-6xl flex-wrap gap-x-8 gap-y-3 px-4 py-6 text-sm font-semibold uppercase tracking-wide text-zinc-100 md:py-7">
-        {['Perth Local', 'Fully Licensed', 'Shows Up On Time', 'Clean, Tidy Work'].map((item) => (
-          <p key={item}>✔ {item}</p>
-        ))}
-      </section>
-
-      <section className="mx-auto grid w-full max-w-6xl items-center gap-8 px-4 py-14 md:grid-cols-2 md:gap-12 md:py-16">
-        <Image src="/images/switchboardfinished.jpg" alt="Sam on site" width={760} height={520} sizes="(max-width: 768px) 100vw, 45vw" className="h-auto w-full rounded-sm object-cover" />
-        <div>
-          <h2 className="font-display text-5xl">Meet Sam</h2>
-          <p className="mt-4 max-w-lg text-xl font-medium text-zinc-200">Straightforward electrical work across Perth. No upsells, no mucking around — just reliable service and clean installs.</p>
-        </div>
-      </section>
-
-      <section id="services" className="mx-auto w-full max-w-6xl px-4 py-14 md:py-16">
-        <h2 className="font-display text-5xl">What Sam Does</h2>
-        <p className="mt-2 text-zinc-300">Fast, reliable electrical work across Perth — no delays.</p>
-        <div className="mt-8 space-y-6">
-          {serviceBlocks.map((service) => (
-            <article key={service.title} className="relative overflow-hidden">
-              <Image src={service.image} alt={service.title} width={1400} height={500} sizes="100vw" className="h-56 w-full object-cover md:h-72" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/30" />
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <h3 className="font-display text-4xl text-white">{service.title}</h3>
-                <p className="text-zinc-100">{service.copy}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="reviews" className="mx-auto w-full max-w-5xl px-4 py-14 md:py-16">
-        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-yellow-300">★★★★★ Google Reviews</p>
-        <h2 className="mt-2 font-display text-5xl">What Perth Clients Say</h2>
-        <div className="mt-10 space-y-10 md:space-y-12">
-          {featuredReviews.map(([name, review]) => {
-            const [first, ...rest] = review.split('. ');
-            return (
-              <blockquote key={name} className="border-l-2 border-yellow-300 pl-5">
-                <p className="mb-2 text-2xl text-yellow-300">★★★★★</p>
-                <p className="text-lg leading-relaxed text-zinc-100"><strong>{first}{rest.length ? '. ' : ''}</strong>{rest.join('. ')}</p>
-                <p className="mt-3 font-bold">— {name}</p>
-              </blockquote>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-6xl px-4 py-14 md:py-16">
-        <h2 className="font-display text-5xl">Recent Work</h2>
-        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
-          {workImages.map((img) => (
-            <div key={img} className="aspect-[4/3] overflow-hidden">
-              <Image src={img} alt="Recent electrical work" width={900} height={700} sizes="(max-width: 768px) 100vw, 33vw" className="h-full w-full object-cover" />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="quote" className="bg-yellow-300 py-14 text-black md:py-16">
-        <div className="mx-auto w-full max-w-4xl px-4">
-          <h2 className="font-display text-5xl">Need an Electrician? Get It Sorted Today.</h2>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a href="tel:0427771905" className="rounded-full bg-black px-6 py-3 text-base font-bold text-yellow-300">Call Now</a>
-            <a href="#quote-form" className="rounded-full border border-black px-6 py-3 text-base font-semibold">Request Quote</a>
-          </div>
-          <p className="mt-3 text-sm font-semibold">Usually responds within 1–2 hours</p>
-          <form id="quote-form" action="/api/quote" method="post" className="mt-8 space-y-3">
-            <input name="name" required placeholder="Name" className="w-full rounded-none border border-black/25 bg-white px-4 py-3" />
-            <input name="phone" required placeholder="Phone" className="w-full rounded-none border border-black/25 bg-white px-4 py-3" />
-            <textarea name="message" required placeholder="Message" className="min-h-32 w-full rounded-none border border-black/25 bg-white px-4 py-3" />
-            <button className="w-full rounded-none bg-black py-3 text-lg font-bold text-yellow-300">Get a Free Quote</button>
-          </form>
-        </div>
-      </section>
-
-      <a href="tel:0427771905" className="fixed bottom-3 left-4 right-4 z-50 rounded-full bg-yellow-300 px-6 py-4 text-center text-base font-bold text-black shadow-xl md:hidden">
-        Call Now
-      </a>
-
-      <footer className="border-t border-yellow-300/20 py-10 text-center text-zinc-300">
-        <p className="font-display text-3xl text-white">SM Electrical WA</p>
-        <p className="mt-2">Quality work. No robots.</p>
-        <p className="mt-2"><a href="tel:0427771905" className="text-yellow-300">{siteConfig.phone}</a> · {siteConfig.email} · Perth WA</p>
-      </footer>
-    </main>
-  );
-}
+export default function HomePage(){const [open,setOpen]=useState(false);return <main className='relative z-10'>
+<header className='sticky top-0 z-50 backdrop-blur bg-black/50 border-b border-yellow-400/20'><nav className='max-w-6xl mx-auto p-4 flex justify-between items-center'><span className='font-display text-3xl tracking-wider'>SM <span className='text-spark'>Electrical</span></span><button className='md:hidden' onClick={()=>setOpen(!open)}><Menu/></button><div className='hidden md:flex gap-6 items-center text-sm'><a href='#services'>Services</a><a href='#reviews'>Reviews</a><a href='#quote' className='px-4 py-2 rounded-full bg-spark text-black font-semibold shadow-[0_0_24px_rgba(250,204,21,.45)]'>Call Sam</a></div></nav>{open&&<div className='md:hidden p-4 flex flex-col gap-3'><a href='#services'>Services</a><a href='#reviews'>Reviews</a></div>}</header>
+<section className='min-h-[92vh] relative flex items-center'><Image src='/images/hero.jpg' alt='' fill className='object-cover'/><div className='absolute inset-0 bg-black/70'/><div className='max-w-6xl mx-auto px-4 relative'><motion.h1 initial={{opacity:0,y:30}} animate={{opacity:1,y:0}} className='font-display text-6xl md:text-8xl leading-none max-w-4xl'>Perth's Electrician. <span className='text-spark underline decoration-4 decoration-spark'>No Robots.</span> No Runaround.</motion.h1><p className='mt-4 max-w-xl text-lg'>Owner-operated. Fully licensed. Free quotes. Sam answers the phone and does the work.</p><div className='mt-8 flex gap-4'><a href='#quote' className='bg-spark text-black px-6 py-3 rounded-full font-bold shadow-[0_0_24px_rgba(250,204,21,.55)]'>Get a Free Quote</a><a href='tel:0427771905' className='px-6 py-3 border border-white/40 rounded-full'>Call Sam — 0427 771 905</a></div></div></section>
+<section className='grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto px-4 py-8 text-center'>{['8+ Five Star Reviews','100% Residential Focus','Perth Local','Direct Line to Sam'].map(t=><motion.div key={t} whileInView={{opacity:[0,1],y:[10,0]}} className='bg-zinc-900 p-4 rounded-lg border border-spark/20'>{t}</motion.div>)}</section>
+<section className='max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center'><Image src='/images/switchboardfinished.jpg' alt='Sam work' width={900} height={700} className='rounded-xl'/><div><h2 className='font-display text-5xl'>About Sam</h2><p className='mt-4 text-zinc-300'>We're not the biggest company (probably the smallest) — but at SM Electrical, we keep things simple: quality work, reliability, and direct contact without talking to a robot.</p><p className='mt-4'>Sam keeps it straightforward: good communication, tidy work, and no runaround.</p></div></section>
+<section id='services' className='max-w-6xl mx-auto px-4 py-16'><h2 className='font-display text-5xl mb-8'>Residential Services</h2><div className='grid md:grid-cols-4 gap-4'>{siteConfig.services.map((s,i)=><motion.div key={s} whileHover={{y:-6}} className='rounded-xl overflow-hidden border border-spark/20 shadow-[0_0_20px_rgba(250,204,21,0.08)] relative'><Image src={`/images/${imgs[i%imgs.length]}`} alt={s} width={600} height={420} className='h-52 object-cover'/><div className='p-4 bg-zinc-950'><Zap className='text-spark w-5 h-5 mb-2'/><h3 className='font-bold'>{s}</h3><p className='text-sm text-zinc-400'>Installed with care by Sam, built to last.</p></div></motion.div>)}</div></section>
+<section id='reviews' className='max-w-6xl mx-auto px-4 py-16'><h2 className='font-display text-5xl mb-8'>Client Reviews</h2><div className='grid md:grid-cols-2 gap-4'>{siteConfig.reviews.map(([n,r])=><motion.blockquote key={n} whileInView={{opacity:[0,1],y:[20,0]}} className='bg-zinc-900 rounded-xl p-6 border border-spark/20'><div className='text-spark text-4xl'>“</div><p>{r}</p><div className='mt-4 font-bold'>{n}</div><div className='flex mt-1'>{[...Array(5)].map((_,i)=><Star key={i} className='w-4 h-4 fill-spark text-spark'/>)}</div></motion.blockquote>)}</div></section>
+<section className='max-w-6xl mx-auto px-4 py-16'><div className='grid md:grid-cols-2 gap-4 mb-4'>{vids.map(v=><video key={v} src={`/videos/${v}`} autoPlay loop muted playsInline className='rounded-xl w-full h-64 object-cover'/>)}</div><div className='columns-1 md:columns-3 gap-4 space-y-4'>{imgs.map(i=><div key={i} className='break-inside-avoid overflow-hidden rounded-xl'><Image src={`/images/${i}`} alt={i} width={700} height={520} className='hover:scale-105 transition duration-500'/></div>)}</div></section>
+<section id='quote' className='bg-zinc-950 py-16'><form action='/api/quote' method='post' className='max-w-4xl mx-auto px-4 grid md:grid-cols-2 gap-4'><h2 className='md:col-span-2 font-display text-5xl'>Get a Free Quote from Sam</h2>{['Name','Phone','Email','Suburb'].map(f=><input key={f} name={f.toLowerCase()} placeholder={f} required className='bg-black border border-zinc-700 rounded-lg p-3'/>) }<select name='service' className='bg-black border border-zinc-700 rounded-lg p-3'>{siteConfig.services.map(s=><option key={s}>{s}</option>)}</select><div/><textarea name='message' placeholder='Message' className='md:col-span-2 min-h-32 bg-black border border-zinc-700 rounded-lg p-3'/><button className='md:col-span-2 bg-spark text-black font-bold py-3 rounded-lg shadow-[0_0_24px_rgba(250,204,21,.55)]'>Get a Free Quote from Sam</button></form></section>
+<footer className='border-t border-spark/20 py-10 text-center text-zinc-400'><p className='font-display text-3xl text-white'>SM Electrical WA</p><p>Quality work. No robots.</p><p className='mt-2'>{siteConfig.phone} · {siteConfig.email} · Perth WA</p><p className='text-xs mt-2'>Website by Built for Perth</p><Phone className='mx-auto mt-2 text-spark'/></footer>
+</main>}
